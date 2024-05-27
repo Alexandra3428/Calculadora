@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Promedio de Notas
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,8 +13,59 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-list class="formulario">
+    <ion-item>
+      <ion-label position="floating">Nombre del Estudiante</ion-label>
+      <ion-input [(ngModel)]="nombre" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Apellido del Estudiante</ion-label>
+      <ion-input [(ngModel)]="apellido" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Nota 1</ion-label>
+      <ion-input [(ngModel)]="nota1" type="number"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Nota 2</ion-label>
+      <ion-input [(ngModel)]="nota2" type="number"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Nota 3</ion-label>
+      <ion-input [(ngModel)]="nota3" type="number"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-button (click)="calcularPromedio()" expand="full">
+        Calcular
+      </ion-button>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Promedio</ion-label>
+      <ion-input [value]="promedio" type="number" readonly></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-button (click)="guardarEstudiante()" expand="full">
+        Guardar
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-list class="guardados">
+    <ion-list-header>
+      <ion-label>Estudiantes Guardados</ion-label>
+    </ion-list-header>
+
+    <ion-item *ngFor="let estudiante of history">
+      <ion-label>
+        {{ estudiante.nombre }} {{ estudiante.apellido }} - Promedio: {{ estudiante.promedio }}
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
